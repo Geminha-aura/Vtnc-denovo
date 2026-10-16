@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#6d5dfc">
+  <meta name="description" content="StudyQuest — estude, pratique e evolua no 8º ano.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <title>StudyQuest | Aprenda jogando</title>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="StudyQuest início"><span class="brand-mark">✦</span><span>Study<span class="brand-accent">Quest</span><small>8º ANO • APRENDA JOGANDO</small></span></a>
+      <nav class="nav">
+        <button class="nav-item active" data-view="home"><span>⌂</span> Menu</button>
+        <button class="nav-item" data-view="profile"><span>☁</span> Perfil</button>
+        <button class="nav-item" data-view="ranking"><span>♛</span> Ranking</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="mini-profile"><div class="avatar">SQ</div><div><b>Explorador(a)</b><small>Seu progresso neste dispositivo</small></div></div>
+        <button id="themeToggle" class="theme-toggle">☾ <span>Alternar tema</span></button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div><div class="eyebrow">QUARTA-FEIRA • SUA JORNADA COMEÇA AQUI</div><h1 id="pageTitle">Bora aprender? <span>🚀</span></h1></div>
+        <div class="top-stats"><div class="stat-chip"><span>⚡</span><b id="topXp">0 XP</b></div><div class="stat-chip"><span>🪙</span><b id="topCoins">0</b></div><button class="mobile-theme" id="mobileTheme" aria-label="Alternar tema">☾</button></div>
+      </header>
+      <section id="view-home" class="view">
+        <div class="hero">
+          <div class="hero-copy"><div class="pill">✦ SUA PRÓXIMA CONQUISTA ESPERA</div><h2>Pequenos passos.<br><span>Grandes conquistas.</span></h2><p>Estude no seu ritmo, complete desafios e transforme conteúdo em conhecimento.</p><button class="primary-btn" data-go="quiz">Começar um desafio <span>→</span></button></div>
+          <div class="hero-art"><div class="orb orb-one"></div><div class="orb orb-two"></div><div class="book-emoji">📚</div><div class="floating-star">✦</div><div class="hero-level"><span>SEU NÍVEL</span><b id="heroLevel">1</b><small id="heroLevelName">Aprendiz</small></div></div>
+        </div>
+        <div class="section-heading"><div><div class="eyebrow">SEU PROGRESSO</div><h2>Visão geral</h2></div><span class="muted">Salvo neste dispositivo</span></div>
+        <div class="stats-grid">
+          <article class="metric-card"><div class="metric-icon purple">⚡</div><div><span>Experiência total</span><b id="homeXp">0 XP</b><small>Continue praticando</small></div></article>
+          <article class="metric-card"><div class="metric-icon yellow">🪙</div><div><span>Moedas ganhas</span><b id="homeCoins">0</b><small>Por desafios concluídos</small></div></article>
+          <article class="metric-card"><div class="metric-icon green">🎯</div><div><span>Respostas certas</span><b id="homeCorrect">0</b><small>Acertos registrados</small></div></article>
+          <article class="metric-card"><div class="metric-icon pink">🏅</div><div><span>Medalhas</span><b id="homeMedals">0</b><small>Conquistas desbloqueadas</small></div></article>
+        </div>
+        <div class="section-heading"><div><div class="eyebrow">ESCOLHA SEU CAMINHO</div><h2>Suas matérias</h2></div><button class="text-btn" data-go="subjects">Ver todas →</button></div>
+        <div id="homeSubjects" class="subject-grid"></div>
+        <div class="bottom-grid">
+          <article class="panel"><div class="panel-heading"><div><h3>Próxima missão</h3><p>Uma rodada rápida já faz diferença.</p></div><span class="panel-emoji">🧭</span></div><div class="mission-row"><div class="mission-icon">✎</div><div><b>Responda 5 perguntas</b><small>Treine o que você já aprendeu.</small></div><button class="round-btn" data-go="quiz">→</button></div></article>
+          <article class="panel"><div class="panel-heading"><div><h3>Conquistas</h3><p>Seus marcos de aprendizagem.</p></div><span class="panel-emoji">🏆</span></div><div id="medalList" class="medal-list"></div></article>
+        </div>
+      </section>
+
+      <section id="view-subject-menu" class="view hidden">
+        <div id="subjectMenuHero" class="subject-menu-hero">
+          <button class="back-link" id="backToSubjects">← Todas as matérias</button>
+          <div class="subject-menu-heading"><div id="subjectMenuEmoji" class="subject-menu-emoji">📚</div><div><div class="eyebrow">SUA JORNADA DE APRENDIZADO</div><h2 id="subjectMenuTitle">Matéria</h2><p id="subjectMenuDesc">Escolha como quer estudar.</p></div></div>
+        </div>
+        <div class="mode-grid">
+          <button class="mode-card" id="modeQuiz"><span class="mode-icon">✎</span><span class="mode-title">Simulado</span><span class="mode-desc">Teste seus conhecimentos e ganhe XP.</span><span class="mode-arrow">Começar →</span></button>
+          <button class="mode-card" id="modeSummary"><span class="mode-icon">📖</span><span class="mode-title">Resumão</span><span class="mode-desc">Revise os tópicos principais da matéria.</span><span class="mode-arrow">Ler resumo →</span></button>
+          <button class="mode-card" id="modeCards"><span class="mode-icon">▤</span><span class="mode-title">Flashcards</span><span class="mode-desc">Vire os cartões e pratique a memória.</span><span class="mode-arrow">Revisar →</span></button>
+          <button class="mode-card" id="modeWritten"><span class="mode-icon">✍️</span><span class="mode-title">Respostas Escritas</span><span class="mode-desc">Escreva com suas palavras e confira os conceitos essenciais.</span><span class="mode-arrow">Responder →</span></button>
+        </div>
+      </section>
+
+      <section id="view-subjects" class="view hidden">
+        <div class="section-heading"><div><div class="eyebrow">BIBLIOTECA</div><h2>Escolha uma matéria</h2><p class="muted">Resumos iniciais para revisar. Você pode ampliar o conteúdo depois.</p></div></div>
+        <div id="allSubjects" class="subject-grid"></div>
+        <div id="subjectDetail" class="panel hidden"></div>
+      </section>
+
+      <section id="view-quiz" class="view hidden">
+        <div class="section-heading"><div><div class="eyebrow">TREINO INTELIGENTE</div><h2>Simulados</h2><p class="muted">Escolha uma matéria e teste seus conhecimentos.</p></div></div>
+        <div id="quizSetup" class="panel quiz-setup">
+          <label for="quizSubject">Matéria</label><select id="quizSubject"></select>
+          <label for="quizDifficulty">Dificuldade</label><select id="quizDifficulty"><option value="facil">Fácil</option><option value="medio" selected>Médio</option><option value="dificil">Difícil</option><option value="mestre">Mestre</option></select>
+          <label for="quizDuration">Duração desejada</label><select id="quizDuration"><option value="10">10 minutos</option><option value="20">20 minutos</option><option value="30" selected>30 minutos</option><option value="45">45 minutos</option></select>
+          <label for="quizCount">Quantidade de perguntas</label><select id="quizCount"><option value="5">5 perguntas</option><option value="10" selected>10 perguntas (quando houver)</option></select>
+          <button id="startQuiz" class="primary-btn">Iniciar simulado →</button>
+          <p id="quizSetupHint" class="muted tiny">A sessão usa apenas perguntas disponíveis para a matéria escolhida. Se não houver a quantidade solicitada, ela não será iniciada com menos perguntas.</p>
+        </div>
+        <div id="quizRun" class="panel hidden"></div>
+      </section>
+
+      <section id="view-cards" class="view hidden">
+        <div class="section-heading"><div><div class="eyebrow">MEMÓRIA ATIVA</div><h2>Flashcards</h2><p class="muted">Pense na resposta antes de virar o cartão.</p></div></div>
+        <div class="cards-toolbar"><label for="cardSubject">Matéria</label><select id="cardSubject"></select><span id="cardCounter" class="muted"></span></div>
+        <div class="flashcard-scene"><div id="flashcard" class="flashcard" tabindex="0" role="button" aria-label="Virar flashcard"><div class="flashcard-inner"><article class="flashcard-face flashcard-front"><div class="card-label">PERGUNTA <span>TOQUE PARA VIRAR ↻</span></div><div class="card-symbol" aria-hidden="true">✦</div><div id="cardText" class="card-text">Escolha uma matéria</div><div class="card-foot">STUDYQUEST <span>•</span> CARTÃO DE REVISÃO</div></article><article class="flashcard-face flashcard-back"><div class="card-label">RESPOSTA <span>TOQUE PARA VOLTAR ↻</span></div><div class="card-symbol" aria-hidden="true">✧</div><div id="cardAnswer" class="card-text">A resposta aparecerá aqui.</div><div class="card-foot">CONSOLIDE O CONHECIMENTO</div></article></div></div></div>
+        <div class="card-actions"><button id="prevCard" class="secondary-btn">← Anterior</button><button id="flipCard" class="primary-btn">Ver resposta ↻</button><button id="nextCard" class="secondary-btn">Próximo →</button></div>
+      </section>
+
+      <section id="view-profile" class="view hidden">
+        <div class="section-heading"><div><div class="eyebrow">SUA JORNADA</div><h2>Perfil</h2><p class="muted">Um espaço para acompanhar sua evolução.</p></div></div>
+        <div class="panel profile-placeholder"><div class="profile-cloud">☁</div><h2>Em desenvolvimento</h2><p>Estamos preparando esta área para uma próxima atualização.</p><span class="profile-dots">•••</span></div>
+      </section>
+
+      <section id="view-ranking" class="view hidden">
+        <div class="section-heading"><div><div class="eyebrow">DESAFIO AMIGÁVEL</div><h2>Ranking da turma</h2><p class="muted">Esta versão mostra seu perfil e exemplos fictícios. Para ranking compartilhado, será preciso conectar um banco de dados online.</p></div></div>
+        <div class="panel ranking-panel"><div class="ranking-banner"><span>🏆</span><div><b>Todo conhecimento conta!</b><small>Ganhe XP resolvendo simulados.</small></div></div><div id="rankingList"></div></div>
+        <div class="notice">🔒 <b>Privacidade:</b> por enquanto, o progresso fica salvo apenas neste navegador. Não digite dados pessoais sensíveis.</div>
+      </section>
+
+      <footer><span>✦ StudyQuest</span><span>Feito para aprender melhor • 8º ano</span><button id="resetProgress" class="reset-btn">Zerar meu progresso</button></footer>
+    </main>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
